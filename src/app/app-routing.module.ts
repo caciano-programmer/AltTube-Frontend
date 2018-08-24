@@ -5,7 +5,7 @@ const routes: Routes = [
   {path: 'login', pathMatch: 'full', loadChildren: './login/login.module#LoginModule'},
   {path: 'account', pathMatch: 'full', loadChildren: './account/account.module#AccountModule'},
   {path: 'video', pathMatch: 'full', loadChildren: './video/video.module#VideoModule'},
-  {path: '**', pathMatch: 'full', redirectTo: '/home'}
+  {path: '**', redirectTo: '/home'}
 ];
 
 @NgModule({

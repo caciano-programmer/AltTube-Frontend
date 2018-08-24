@@ -4,6 +4,7 @@ import {NgModule} from '@angular/core';
 
 
 const routes: Routes = [
+  {path: '', pathMatch: 'full', component: HomeComponent},
   {path: 'home', pathMatch: 'full', component: HomeComponent}
 ];
 
