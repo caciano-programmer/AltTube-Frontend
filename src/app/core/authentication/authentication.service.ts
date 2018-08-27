@@ -16,9 +16,18 @@ export class AuthenticationService {
     const body = new URLSearchParams(`name=${name}`).toString();
 
     return this.http.post(global.createAccountUrl, body, {
-      headers: new HttpHeaders().append('Authorization', encodedBasicAuth).set('Content-Type', 'application/x-www-form-urlencoded'),
+      headers: new HttpHeaders().append('Authorization', encodedBasicAuth).set('Content-Type', 'application/x-www-form-urlencoded')
     });
   }
 
-  login(email) {}
+  login(email: string, password: string): Observable<any> {
+
+    const encodedBasicAuth: string = 'Basic ' + btoa(`${email}:${password}`);
+
+    return this.http.post(global.loginUrl, null, {
+      headers: new HttpHeaders().append('Authorization', encodedBasicAuth).set('Content-Type', 'application/x-www-form-urlencoded')
+    });
+  }
+
+  logout(): Observable<any> { return this.http.get(global.logoutUrl); }
 }
