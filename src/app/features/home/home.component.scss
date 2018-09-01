@@ -1,0 +1,23 @@
+.searchRow {
+  margin-top: 11vh;
+  text-align: center;
+}
+#searchHeader span {
+  font-size: 72pt;
+}
+#searchHeader span:first-child {
+  color: red;
+}
+#searchHeader span:nth-child(2) {
+  color: white;
+  text-shadow: -1px 0 red, 0 1px red, 1px 0 red, 0 -1px red;
+}
+#categories button {
+  color: red;
+  cursor: pointer;
+  margin-right: 1rem;
+  border: 1px red solid;
+}
+button:hover {
+  background-color: white;
+}

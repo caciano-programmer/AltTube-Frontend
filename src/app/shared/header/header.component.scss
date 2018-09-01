@@ -1,9 +1,12 @@
-#logo {
-  height: 40px;
-  width: auto;
+nav {
+  background-color: #fafafa;
 }
 a {
   height: 100%;
+}
+#logo {
+  height: 40px;
+  width: auto;
 }
 img:not(#logo) {
   height: 27.5px;
