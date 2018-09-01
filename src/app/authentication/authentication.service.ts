@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
-import {EMPTY, Observable} from 'rxjs';
-import * as global from './../../globals';
+import {BehaviorSubject, EMPTY, Observable} from 'rxjs';
+import * as global from './../globals';
 import {tap} from 'rxjs/operators';
+import {Router} from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService implements HttpInterceptor {
 
-  constructor(private http: HttpClient) { }
+  private loggedIn = new BehaviorSubject<boolean>(false);
+
+  constructor(private http: HttpClient, private router: Router) { }
 
   create(name: string, email: string, password: string): Observable<any> {
 
@@ -32,6 +36,8 @@ export class AuthenticationService implements HttpInterceptor {
 
   logout(): Observable<any> {
     window.sessionStorage.clear();
+    this.router.navigate(['/']);
+    this.loggedIn.next(false);
     return this.http.get(global.logoutUrl);
   }
 
@@ -51,6 +57,10 @@ export class AuthenticationService implements HttpInterceptor {
     }
 
     return EMPTY;
+  }
+
+  isLoggedIn(): BehaviorSubject<boolean> {
+    return this.loggedIn;
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

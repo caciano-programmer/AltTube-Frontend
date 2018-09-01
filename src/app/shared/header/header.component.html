@@ -1,0 +1,10 @@
+<nav class="border-bottom navbar">
+  <a class="navbar-brand" [routerLink]="['/']" style="cursor: pointer"> <img id="logo" src="/assets/images/logo.png"> </a>
+  <div>
+    <a style="cursor: pointer" routerLink="/video"> <img src="/assets/images/video.png"> </a>
+    <a style="cursor: pointer" style="margin-left: 25px"  routerLink="/account"> <img src="/assets/images/account.png"> </a>
+    <a class="float-right" style="cursor: pointer; margin-left: 90px" routerLink="/login" *ngIf="!isLoggedIn"> <img src="/assets/images/login.png"> </a>
+    <a class="float-right" style="cursor: pointer; margin-left: 90px" *ngIf="isLoggedIn" (click)="logout()"> <img src="/assets/images/logout.png"> </a>
+  </div>
+</nav>
+
