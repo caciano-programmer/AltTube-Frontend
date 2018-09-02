@@ -8,7 +8,7 @@
     <div class="col-3"></div>
     <form class="col-6">
       <div class="input-group">
-        <input type="text" class="form-control" id="Search" placeholder="Enter search or click a category..." maxlength="40">
+        <input type="text" class="form-control" id="Search" placeholder="Enter search or select category..." maxlength="40">
         <div class="input-group-prepend" style="cursor: pointer">
           <div class="input-group-text">⌕</div>
         </div>
@@ -16,7 +16,7 @@
     </form>
     <div class="col-3"></div>
   </div>
-  <div id="categories" class="row" style="margin-top: 30px">
+  <div id="categories" class="row" style="margin-top: 20px">
     <div class="col-2"></div>
     <div class="col-8 d-flex justify-content-center flex-wrap">
       <button type="button" class="btn" *ngFor="let category of categories" style="margin-top: 20px">#{{category}}</button>

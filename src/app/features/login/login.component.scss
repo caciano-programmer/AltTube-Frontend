@@ -1,0 +1,34 @@
+#formHeader {
+  text-align: center;
+  color: red;
+  font-size: 60pt;
+}
+#newUserBtn {
+  color: red;
+  cursor: pointer;
+  margin-right: 1rem;
+  border: 1px red solid;
+  font-size: 11pt;
+}
+#newUserBtn:hover {
+  background-color: white;
+}
+#submitBtn {
+  color: white;
+  font-weight: bold;
+  background-color: rgba(229, 6, 6, .7);
+  border: solid red 2px;
+}
+#submitBtn:hover {
+  background-color: white;
+  color: red;
+}
+.ng-untouched {
+  box-shadow: none;
+}
+#displayError {
+  background-color: rgba(255, 0, 0, .1);
+  margin-top: -20px;
+  margin-bottom: 15px;
+  height: 40px;
+}
