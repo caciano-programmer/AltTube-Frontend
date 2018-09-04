@@ -46,21 +46,20 @@ export class LoginComponent implements OnInit {
       this.authService.create(form.value.name, form.value.email, form.value.password).subscribe(data => {
         const object: Object = JSON.parse(JSON.stringify(data));
         if (object['status'] !== null && object['status'] === 'successful') {
-          console.log('works');
           this.authService.isLoggedIn().next(true);
           this.router.navigate(['/home']);
         }
       }, error => {
-        if (error !== null)
+        if (error !== null) {
           this.errorPresent = true;
-        console.log(error);
+          this.error = error['error']['message'];
+        }
       });
     }
 
     if (!this.newUser) {
       this.authService.login(form.value.email, form.value.password).subscribe(data => {
         const object: Object = JSON.parse(JSON.stringify(data));
-        console.log(JSON.parse(JSON.stringify(data)))
         if (object['status'] !== null && object['status'] === 'successful') {
           this.authService.isLoggedIn().next(true);
           this.router.navigate(['/home']);
@@ -72,5 +71,7 @@ export class LoginComponent implements OnInit {
         }
       });
     }
+
+    form.reset();
   }
 }
