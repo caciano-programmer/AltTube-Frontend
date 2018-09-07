@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AccountRoutingModule } from './account-routing.module';
 import {AccountComponent} from './account.component';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import { GenderPipe } from './pipes/gender.pipe';
 
 
 
@@ -13,6 +14,6 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
     CommonModule,
     AccountRoutingModule
   ],
-  declarations: [AccountComponent]
+  declarations: [AccountComponent, GenderPipe]
 })
 export class AccountModule {}

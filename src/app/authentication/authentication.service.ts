@@ -4,6 +4,7 @@ import {BehaviorSubject, EMPTY, Observable} from 'rxjs';
 import * as global from './../globals';
 import {tap} from 'rxjs/operators';
 import {Router} from '@angular/router';
+import {equal} from 'assert';
 
 
 @Injectable({
@@ -11,7 +12,7 @@ import {Router} from '@angular/router';
 })
 export class AuthenticationService implements HttpInterceptor {
 
-  private loggedIn = new BehaviorSubject<boolean>(false);
+  private loggedIn = new BehaviorSubject<boolean>(this.initToken());
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -35,15 +36,15 @@ export class AuthenticationService implements HttpInterceptor {
   }
 
   logout(): Observable<any> {
-    window.sessionStorage.clear();
+    sessionStorage.clear();
     this.router.navigate(['/']);
     this.loggedIn.next(false);
     return this.http.get(global.logoutUrl);
   }
 
   update(gender?: string, description?: string, age?: string, image?: File): Observable<any> {
-    if (name !== null || gender !== null || age !== null || description !== null || image !== null
-      && window.sessionStorage.getItem('token') !== null ) {
+    if ( gender !== null || age !== null || description !== null || image !== null
+      && sessionStorage.getItem('token') !== null ) {
 
       const formData: FormData = new FormData();
       if (gender !== null) formData.append('gender', gender);
@@ -52,7 +53,7 @@ export class AuthenticationService implements HttpInterceptor {
       if (image !== null) formData.append('image', image);
 
       return this.http.post(global.updateAccount, formData, {
-        headers: new HttpHeaders().set('token', window.sessionStorage.getItem('token'))
+        headers: new HttpHeaders().set('token', sessionStorage.getItem('token'))
       });
     }
 
@@ -69,7 +70,10 @@ export class AuthenticationService implements HttpInterceptor {
 
     return next.handle(clone).pipe( tap(event => {
       if (event instanceof HttpResponse)
-        window.sessionStorage.setItem('token', event.headers.get('token'));
+        if (!sessionStorage.getItem('token'))
+          sessionStorage.setItem('token', event.headers.get('token'));
     }));
   }
+
+  private initToken(): boolean { return sessionStorage.getItem('token') ? true : false; }
 }
