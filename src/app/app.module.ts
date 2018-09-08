@@ -6,7 +6,7 @@ import {AppComponent} from './app.component';
 import {HomeModule} from './features/home/home.module';
 import {AppRoutingModule} from './routing/app-routing.module';
 import {SharedModule} from './shared/shared.module';
-import {AuthenticationService} from './authentication/authentication.service';
+import {TokenInterceptorService} from './authentication/interceptors/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import {AuthenticationService} from './authentication/authentication.service';
     AppRoutingModule,
     SharedModule
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthenticationService, multi: true}],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

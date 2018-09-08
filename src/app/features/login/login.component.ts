@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthenticationService} from '../../authentication/authentication.service';
+import {AccountAuthenticationService} from '../../authentication/account/account-authentication.service';
 import {BehaviorSubject} from 'rxjs';
 import {NgForm} from '@angular/forms';
 import {Router} from '@angular/router';
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   userBtn: string = 'Create Account?';
   Subject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.newUser);
 
-  constructor(private authService: AuthenticationService, private router: Router) { }
+  constructor(private authService: AccountAuthenticationService, private router: Router) { }
 
   ngOnInit() {
     this.Subject.subscribe(
