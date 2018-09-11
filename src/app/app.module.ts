@@ -16,8 +16,9 @@ import {TokenInterceptorService} from './authentication/interceptors/token-inter
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     HttpClientModule,
     HomeModule,
-    AppRoutingModule,
-    SharedModule
+    SharedModule,
+    AppRoutingModule
+
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true}],
   bootstrap: [AppComponent]

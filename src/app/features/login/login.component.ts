@@ -31,9 +31,10 @@ export class LoginComponent implements OnInit {
         (this.userBtn = 'Create Account?', this.Header = 'Login'));
   }
 
-  NewUser() {
+  NewUser(form: NgForm) {
     this.errorPresent = false;
     this.newUser = !this.newUser;
+    form.reset();
     this.Subject.next(this.newUser);
   }
 
@@ -47,6 +48,7 @@ export class LoginComponent implements OnInit {
         const object: Object = JSON.parse(JSON.stringify(data));
         if (object['status'] !== null && object['status'] === 'successful') {
           this.authService.isLoggedIn().next(true);
+          this.authService.setName(object['name']);
           this.router.navigate(['/home']);
         }
       }, error => {
@@ -62,6 +64,7 @@ export class LoginComponent implements OnInit {
         const object: Object = JSON.parse(JSON.stringify(data));
         if (object['status'] !== null && object['status'] === 'successful') {
           this.authService.isLoggedIn().next(true);
+          this.authService.setName(object['name']);
           this.router.navigate(['/home']);
         }
       }, error => {

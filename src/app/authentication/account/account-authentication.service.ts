@@ -38,6 +38,8 @@ export class AccountAuthenticationService {
     return this.http.get(global.logoutUrl);
   }
 
+  getProfile(): Observable<any> { return this.http.get(global.getProfile, { headers: new HttpHeaders().set('token', sessionStorage.getItem('token')) }); }
+
   update(gender?: string, description?: string, age?: string, file?: File): Observable<any> {
     if ( gender !== null || age !== null || description !== null || file !== null
       && sessionStorage.getItem('token') !== null ) {
@@ -56,9 +58,11 @@ export class AccountAuthenticationService {
     return EMPTY;
   }
 
-  isLoggedIn(): BehaviorSubject<boolean> {
-    return this.loggedIn;
-  }
+  setName(name: string): void { sessionStorage.setItem('name', name); }
+
+  getName(): string { return sessionStorage.getItem('name'); }
+
+  isLoggedIn(): BehaviorSubject<boolean> { return this.loggedIn; }
 
   private initToken(): boolean { return sessionStorage.getItem('token') ? true : false; }
 }
