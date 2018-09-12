@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AccountAuthenticationService} from '../../authentication/account/account-authentication.service';
+import {AccountAuthenticationService} from '../../../authentication/account/account-authentication.service';
 import {BehaviorSubject} from 'rxjs';
 import {NgForm} from '@angular/forms';
 import {Router} from '@angular/router';

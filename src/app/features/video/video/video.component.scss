@@ -1,0 +1,41 @@
+.container {
+  margin-top: 4vh;
+  margin-bottom: 10vh;
+}
+video {
+  background-color: black;
+  z-index: -1;
+}
+#video img {
+  top: 50%;
+  left: 50%;
+  z-index: 0;
+  position: absolute;
+  transform: translate(-50px, -32.5px);
+  cursor: pointer;
+  opacity: .9;
+}
+#video img:hover {
+  opacity: 1;
+}
+#videoFooter {
+  background-color: rgba(153, 153, 153, .4);
+  border-bottom: black solid 1px;
+  border-left: black solid 1px;
+  border-right: black solid 1px;
+}
+#comments:hover, #live-chat:hover {
+  background-color: rgba(153, 153, 153, .5);
+}
+#comments, #live-chat {
+  background-color: rgba(153, 153, 153, .2);
+  border-top: black solid 1px;
+  text-align: center;
+  cursor: pointer;
+}
+#showMore img {
+  height: 20px;
+  width: 100px;
+  cursor: pointer;
+}
+

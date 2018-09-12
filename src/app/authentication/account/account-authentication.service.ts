@@ -31,9 +31,9 @@ export class AccountAuthenticationService {
     });
   }
 
-  logout(): Observable<any> {
+  logout(login?: boolean): Observable<any> {
     sessionStorage.clear();
-    this.router.navigate(['/']);
+    login ? this.router.navigate(['/login']) : this.router.navigate(['/']);
     this.loggedIn.next(false);
     return this.http.get(global.logoutUrl);
   }

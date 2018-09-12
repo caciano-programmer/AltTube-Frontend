@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
-import {AccountAuthenticationService} from '../../authentication/account/account-authentication.service';
+import {AccountAuthenticationService} from '../../../authentication/account/account-authentication.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -57,10 +57,7 @@ export class AccountComponent implements OnInit {
           this.file == null ? this.setDetails(gender, age, description) : this.retrieveProfile();
           this.edit();
         }
-      }, error => {
-        if (error !== null) {
-          this.router.navigate(['/login']);
-        }});
+      }, error => { if (error !== null) this.auth.logout(true); });
     else
       this.edit();
   }

@@ -1,15 +1,13 @@
 import {RouterModule, Routes} from '@angular/router';
-import {HomeComponent} from './home/home.component';
+import {UploadComponent} from './upload/upload.component';
 import {NgModule} from '@angular/core';
 
-
 const routes: Routes = [
-  {path: '', pathMatch: 'full', component: HomeComponent},
-  {path: 'home', pathMatch: 'full', component: HomeComponent}
+  {path: '', pathMatch: 'full', component: UploadComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class HomeRoutingModule {}
+export class UploadRoutingModule {}
