@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
         if (object['status'] !== null && object['status'] === 'successful') {
           this.authService.isLoggedIn().next(true);
           this.authService.setName(object['name']);
-          this.router.navigate(['/home']);
+          this.router.navigate(['']);
         }
       }, error => {
         if (error !== null) {
@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
         if (object['status'] !== null && object['status'] === 'successful') {
           this.authService.isLoggedIn().next(true);
           this.authService.setName(object['name']);
-          this.router.navigate(['/home']);
+          this.router.navigate(['']);
         }
       }, error => {
         if (error !== null) {
