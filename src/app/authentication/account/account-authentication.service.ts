@@ -62,6 +62,10 @@ export class AccountAuthenticationService {
 
   getName(): string { return sessionStorage.getItem('name'); }
 
+  setID(id: string): void { sessionStorage.setItem('id', id); }
+
+  getID(): string { return sessionStorage.getItem('id'); }
+
   isLoggedIn(): BehaviorSubject<boolean> { return this.loggedIn; }
 
   private initToken(): boolean { return sessionStorage.getItem('token') ? true : false; }

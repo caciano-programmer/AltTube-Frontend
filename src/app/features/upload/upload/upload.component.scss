@@ -1,0 +1,15 @@
+.form-inline .form-group {
+  margin-right: 1vw;
+}
+.ng-untouched {
+  box-shadow: none;
+}
+form div {
+  margin-top: .5vh;
+}
+#displayError {
+  background-color: rgba(255, 0, 0, .1);
+  margin-top: -20px;
+  margin-bottom: 15px;
+  height: 40px;
+}

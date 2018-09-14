@@ -49,6 +49,7 @@ export class LoginComponent implements OnInit {
         if (object['status'] !== null && object['status'] === 'successful') {
           this.authService.isLoggedIn().next(true);
           this.authService.setName(object['name']);
+          this.authService.setID(object['id']);
           this.router.navigate(['']);
         }
       }, error => {
@@ -65,6 +66,7 @@ export class LoginComponent implements OnInit {
         if (object['status'] !== null && object['status'] === 'successful') {
           this.authService.isLoggedIn().next(true);
           this.authService.setName(object['name']);
+          this.authService.setID(object['id']);
           this.router.navigate(['']);
         }
       }, error => {

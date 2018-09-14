@@ -7,9 +7,9 @@ export const updateAccount = 'http://localhost:8080/account/update_account';
 export const getProfile = 'http://localhost:8080/account/profile';
 
 // ____________ Videos____________
-export const accountVideos = 'http://localhost:8080/account/video';
-export const getVideos = 'http://localhost:8080/video';
-export const saveVideo = 'http://localhost:8080/video';
+export const accountVideos = 'http://localhost:8081/account/video';
+export const getVideos = 'http://localhost:8081/video';
+export const saveVideo = 'http://localhost:8081/video';
 
 // ____________ Comments____________
 export const saveComment = 'http://localhost:8080/video/comment';
