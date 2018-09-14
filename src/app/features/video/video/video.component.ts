@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {VideoAuthenticationService} from '../../../authentication/video/video-authentication.service';
 
 @Component({
   selector: 'app-video',
@@ -12,9 +13,10 @@ export class VideoComponent implements OnInit {
   owner: string = 'test owner';
   description: string = 'test description';
 
-  constructor() { }
+  constructor(private vidAuth: VideoAuthenticationService) { }
 
   ngOnInit() {
+
   }
 
   viewComments(): void {

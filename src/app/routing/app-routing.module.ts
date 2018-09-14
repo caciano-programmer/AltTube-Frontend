@@ -7,7 +7,8 @@ const routes: Routes = [
   {path: 'account', pathMatch: 'full', canActivate: [AuthGuardService], loadChildren: './../features/account/account.module#AccountModule'},
   {path: 'upload', pathMatch: 'full', canActivate: [AuthGuardService], loadChildren: './../features/upload/upload.module#UploadModule'},
   {path: 'video', pathMatch: 'full', loadChildren: './../features/video/video.module#VideoModule'},
-  {path: '**', redirectTo: ''}
+  {path: 'search', pathMatch: 'prefix', loadChildren: './../features/search/search.module#SearchModule'},
+  {path: '**', redirectTo: '/'}
 ];
 
 @NgModule({

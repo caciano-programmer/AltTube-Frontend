@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
   categories: string[] = [
     'EDUCATIONAL',
@@ -16,11 +16,6 @@ export class HomeComponent implements OnInit {
     'ARTISTIC',
     'ANIMATION',
     'MISCELLANEOUS'];
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
   search(query: string) {
 

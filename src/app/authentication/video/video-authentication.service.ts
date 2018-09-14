@@ -25,4 +25,8 @@ export class VideoAuthenticationService {
       headers: new HttpHeaders().set('token', sessionStorage.getItem('token'))
     });
   }
+
+  getVideos(category: string): Observable<any> {
+    return this.http.get(global.getVideosByCategory(category));
+  }
 }
