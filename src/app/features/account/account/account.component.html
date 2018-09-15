@@ -27,11 +27,16 @@
   <div class="row" style="margin-top: 15vh; margin-bottom: 5vh">
     <div class="col-3 d-flex justify-content-center" style="font-weight: bold; ">{{name | lowercase | titlecase}}'s Videos:</div>
   </div>
-  <div class="row">
-    <div class="col-12 d-flex justify-content-center" style="background-color: #fafafa; height: 15vh; border: lightgray solid 1px">
-      <p>{{name | lowercase | titlecase}} has not uploaded any content yet :(</p>
+  <div class="row" *ngIf="thumbnails === null; else videos">
+    <div class="d-flex justify-content-center" style="background-color: #fafafa; height: 15vh; border: lightgray solid 1px">
+      <p class="col-12">{{name | lowercase | titlecase}} has not uploaded any content yet :(</p>
     </div>
   </div>
+  <ng-template #videos>
+    <div class="row">
+      <app-thumbnail style="margin-bottom: 7.5vh" class="col-4" *ngFor="let thumbnail of thumbnails" [thumbnail]="thumbnail"></app-thumbnail>
+    </div>
+  </ng-template>
 </div>
 
 <ng-container *ngIf="isUpdating">

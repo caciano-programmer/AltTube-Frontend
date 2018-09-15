@@ -27,6 +27,10 @@ export class VideoAuthenticationService {
     });
   }
 
+  getVideosByOwner(num: number): Observable<Array<ThumbnailModel>> {
+    return this.http.get<Array<ThumbnailModel>>(global.accountVideos(num));
+  }
+
   getVideosByCategory(category: string): Observable<Array<ThumbnailModel>> {
     return this.http.get<Array<ThumbnailModel>>(global.getVideosByCategory(category));
   }

@@ -12,12 +12,12 @@
           <span>{{message}}</span>
         </div>
         <div class="form-row">
-          <div class="form-group">
+          <div class="form-group" style="width: 50%">
             <label for="video">Select Video:</label>
             <input required type="file" class="form-control-file" id="video" name="videoFile" accept="video/*"
                    style="cursor: pointer" (change)="videoGet($event)">
           </div>
-          <div class="form-group">
+          <div class="form-group" style="width: 50%">
             <label for="thumbnail">Select Thumbnail:</label>
             <input type="file" required class="form-control-file" id="thumbnail" name="thumbnailFile" accept="image/*"
                    style="cursor: pointer" (change)="imageGet($event)">

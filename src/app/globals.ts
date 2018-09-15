@@ -7,14 +7,16 @@ export const updateAccount = 'http://localhost:8080/account/update_account';
 export const getProfile = 'http://localhost:8080/account/profile';
 
 // ____________ Videos____________
-export const accountVideos = 'http://localhost:8081/account/video';
+export const saveVideo = 'http://localhost:8081/video';
+export const accountVideos = function (id: number): string {
+  return `http://localhost:8081/account/videos/id/${id}`;
+};
 export const getVideosByCategory = function (category: string): string {
   return `http://localhost:8081/video/category/${category}`;
 };
 export const getVideosByKeyword = function (keyword: string): string {
   return `http://localhost:8081/video/keyword/${keyword}`;
 };
-export const saveVideo = 'http://localhost:8081/video';
 
 // ____________ Comments____________
 export const saveComment = 'http://localhost:8080/video/comment';

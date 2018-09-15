@@ -1,6 +1,11 @@
 <div class="container">
-  <span *ngIf="thumbnails !== null">
-    <app-thumbnail *ngFor="let thumbnail of thumbnails" [thumbnail]="thumbnail"></app-thumbnail>
-  </span>
+  <div class="row" *ngIf="thumbnails == null">
+    <div class="col-2"></div>
+    <div class="col" style="margin-top: 7.5vh"><h3 style="text-align: center">Sorry this search returned no results :(</h3></div>
+    <div class="col-2"></div>
+  </div>
+  <div *ngIf="thumbnails !== null" class="row">
+    <app-thumbnail class="col-4" style="margin-top: 7.5vh" *ngFor="let thumbnail of thumbnails" [thumbnail]="thumbnail"></app-thumbnail>
+  </div>
 </div>
 

@@ -18,11 +18,10 @@ export class SearchComponent implements OnInit {
     this.route.params.subscribe(param => {
       if (param['category'] !== undefined)
         this.vidAuth.getVideosByCategory(param['category']).subscribe(
-          (result) => this.thumbnails = result);
+          (result) => result.length > 0 ? this.thumbnails = result : this.thumbnails = null);
       else
         this.vidAuth.getVideosByKeyword(param['keyword']).subscribe(
-          (result) => this.thumbnails = result);
+          (result) => result.length > 0 ? this.thumbnails = result : this.thumbnails = null);
     });
   }
-
 }

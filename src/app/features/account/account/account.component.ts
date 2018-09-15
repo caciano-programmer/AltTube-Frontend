@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {AccountAuthenticationService} from '../../../authentication/account/account-authentication.service';
 import {Router} from '@angular/router';
+import {ThumbnailModel} from '../../../shared/models/thumbnail.model';
+import {VideoAuthenticationService} from '../../../authentication/video/video-authentication.service';
 
 @Component({
   selector: 'app-account',
@@ -19,15 +21,19 @@ export class AccountComponent implements OnInit {
   gender: string;
   file: File = null;
 
+  thumbnails: ThumbnailModel[];
+
   profileForm = this.formBuilder.group({
     description:  ['', Validators.compose([Validators.minLength(2), Validators.maxLength(600)])],
     age: ['', Validators.pattern(/^[1-9][0-9]?$|^1[0-1][0-9]$|^120$/)],
     gender: ['', Validators.pattern(/M|F/)]
   });
 
-  constructor(private formBuilder: FormBuilder, private auth: AccountAuthenticationService, private router: Router) {}
+  constructor(private formBuilder: FormBuilder, private auth: AccountAuthenticationService, private vidAuth: VideoAuthenticationService) {}
 
   ngOnInit() {
+    this.vidAuth.getVideosByOwner(Number(this.auth.getID())).subscribe(
+      data => this.thumbnails = data.length > 0 ? data : null);
     this.name = this.auth.getName();
     this.description = `User ${this.fixName(this.name)} has not provided a description yet.`;
     this.retrieveProfile();
@@ -75,7 +81,6 @@ export class AccountComponent implements OnInit {
         if (data['gender']) this.gender = data['gender'];
         if (data['description']) this.description = data['description'];
         if (data['image']) this.imageSrc = `data:image/jpg;base64,${atob(data['image'])}`;
-        console.log(this.imageSrc);
       }
     });
   }
