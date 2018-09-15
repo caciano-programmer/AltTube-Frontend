@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import * as global from './../../globals';
+import {ThumbnailModel} from '../../shared/models/thumbnail.model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,11 @@ export class VideoAuthenticationService {
     });
   }
 
-  getVideos(category: string): Observable<any> {
-    return this.http.get(global.getVideosByCategory(category));
+  getVideosByCategory(category: string): Observable<Array<ThumbnailModel>> {
+    return this.http.get<Array<ThumbnailModel>>(global.getVideosByCategory(category));
+  }
+
+  getVideosByKeyword(keyword: string): Observable<Array<ThumbnailModel>> {
+    return this.http.get<Array<ThumbnailModel>>(global.getVideosByKeyword(keyword.toLowerCase()));
   }
 }

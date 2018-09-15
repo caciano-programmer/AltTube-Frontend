@@ -4,7 +4,9 @@ import {NgModule} from '@angular/core';
 
 const routes: Routes = [
   {path: 'keyword/:keyword', pathMatch: 'full', component: SearchComponent},
-  {path: 'category/:category', pathMatch: 'full', component: SearchComponent}
+  {path: 'category/:category', pathMatch: 'full', component: SearchComponent},
+  {path: 'keyword/**', pathMatch: 'full', component: SearchComponent},
+  {path: 'category/**', pathMatch: 'full', component: SearchComponent}
 ];
 
 @NgModule({

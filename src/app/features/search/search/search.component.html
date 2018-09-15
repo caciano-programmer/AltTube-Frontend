@@ -1,3 +1,6 @@
-<p>
-  search works!
-</p>
+<div class="container">
+  <span *ngIf="thumbnails !== null">
+    <app-thumbnail *ngFor="let thumbnail of thumbnails" [thumbnail]="thumbnail"></app-thumbnail>
+  </span>
+</div>
+

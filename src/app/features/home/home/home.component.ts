@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import {Router} from '@angular/router';
+import {Categories} from '../../../shared/models/category.model';
 
 @Component({
   selector: 'app-home',
@@ -7,17 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent {
 
-  categories: string[] = [
-    'EDUCATIONAL',
-    'SPORTS',
-    'MUSIC',
-    'OUTDOORS',
-    'ENTERTAINMENT',
-    'ARTISTIC',
-    'ANIMATION',
-    'MISCELLANEOUS'];
+  keyword: string = '';
+  categories: string[] = Categories;
 
-  search(query: string) {
+  constructor(private router: Router) {}
 
-  }
+  submitKeyword(): void { this.router.navigate([`/search/keyword/${this.keyword}`]); }
+
+  submitCategory(category: string): void { this.router.navigate([`/search/category/${category}`]); }
 }

@@ -5,4 +5,5 @@ export const Categories: string[] = [
   'OUTDOORS',
   'ARTISTIC',
   'ANIMATION',
+  'ENTERTAINMENT',
   'MISCELLANEOUS'];

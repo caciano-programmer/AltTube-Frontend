@@ -75,6 +75,7 @@ export class AccountComponent implements OnInit {
         if (data['gender']) this.gender = data['gender'];
         if (data['description']) this.description = data['description'];
         if (data['image']) this.imageSrc = `data:image/jpg;base64,${atob(data['image'])}`;
+        console.log(this.imageSrc);
       }
     });
   }
