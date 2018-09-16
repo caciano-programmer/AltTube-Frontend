@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row" style="margin-top: 5vh">
+    <div class="col-3"></div>
+    <div class="col border-bottom" style="text-align: center; font-size: 60pt; color: red">Edit</div>
+    <div class="col-3"></div>
+  </div>
+  <div class="row" style="margin-top: 5vh">
+    <div class="col-2"></div>
+    <form [formGroup]="profileForm" (ngSubmit)="submit()" class="col">
+      <div class="form-inline">
+        <div class="form-group">
+          <input type="file" class="form-control-file" style="cursor: pointer" accept="image/*" (change)="fileGet($event)">
+        </div>
+        <div class="form-group" style="margin-right: 2.5vw; margin-left: -2.5vw">
+          <label for="selectAge" style="margin-right: 1vh">Age:</label>
+          <input type="text" style="width: 5vw" id="selectAge" formControlName="age" class="form-control" maxlength="3">
+        </div>
+        <div class="form-check form-check-inline">
+          <input type="radio" id="selectMale" class="form-check-input" formControlName="gender" value="M">
+          <label for="selectMale" class="form-check-label">Male</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input type="radio" id="selectFemale" class="form-check-input" formControlName="gender" value="F">
+          <label for="selectFemale" class="form-check-label">Female</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input type="radio" id="selectNone" class="form-check-input" formControlName="gender" value=''>
+          <label for="selectNone" class="form-check-label">None</label>
+        </div>
+      </div>
+      <div class="form-group" style="margin-top: 2vh">
+        <label for="selectDescription">Description:</label>
+        <textarea  class="form-control" type="text" id="selectDescription" formControlName="description" rows="4"
+                   placeholder="Enter description..." name="description" style="width: 95%" maxlength="600"></textarea>
+      </div>
+      <div class="d-flex justify-content-center" style="margin-top: 4vh">
+        <button type="submit" class="btn btn-secondary" style="align: right">Submit</button>
+      </div>
+    </form>
+    <div class="col-2"></div>
+  </div>
+</div>
+

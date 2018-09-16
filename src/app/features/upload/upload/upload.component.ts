@@ -32,7 +32,7 @@ export class UploadComponent {
       this.videoFile, this.thumbnailFile).subscribe(data => {
       const object: Object = JSON.parse(JSON.stringify(data));
       if (object['status'] !== null && object['status'] === 'successful')
-        this.accAuth.isLoggedIn() ? this.router.navigate(['/account']) : this.router.navigate(['/']);
+        this.accAuth.isLoggedIn() ? this.router.navigate([`/account/${this.accAuth.getID()}`]) : this.router.navigate(['/']);
     }, error => {
         this.showMsg = true;
         this.message = error['error']['message'];

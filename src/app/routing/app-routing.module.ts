@@ -4,7 +4,8 @@ import {AuthGuardService} from './auth-guard.service';
 
 const routes: Routes = [
   {path: 'login', pathMatch: 'full', loadChildren: './../features/login/login.module#LoginModule'},
-  {path: 'account', pathMatch: 'full', canActivate: [AuthGuardService], loadChildren: './../features/account/account.module#AccountModule'},
+  {path: 'account/:id', pathMatch: 'full', loadChildren: './../features/account/account.module#AccountModule'},
+  {path: 'edit', pathMatch: 'full', canActivate: [AuthGuardService], loadChildren: './../features/edit/edit.module#EditModule'},
   {path: 'upload', pathMatch: 'full', canActivate: [AuthGuardService], loadChildren: './../features/upload/upload.module#UploadModule'},
   {path: 'video/:id', pathMatch: 'full', loadChildren: './../features/video/video.module#VideoModule'},
   {path: 'search', pathMatch: 'prefix', loadChildren: './../features/search/search.module#SearchModule'},

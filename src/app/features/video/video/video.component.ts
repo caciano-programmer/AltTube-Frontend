@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {VideoAuthenticationService} from '../../../authentication/video/video-authentication.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-video',
@@ -12,11 +13,12 @@ export class VideoComponent implements OnInit {
   title: string = 'Test title';
   owner: string = 'test owner';
   description: string = 'test description';
+  ownerUrl: string;
 
-  constructor(private vidAuth: VideoAuthenticationService) { }
+  constructor(private vidAuth: VideoAuthenticationService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-
+    this.route.params.subscribe(params => params['id'] ? this.ownerUrl = `/account/${params['id']}` : '');
   }
 
   viewComments(): void {

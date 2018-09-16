@@ -9,12 +9,16 @@ import {AccountAuthenticationService} from '../../authentication/account/account
 export class HeaderComponent implements OnInit {
 
   isLoggedIn: boolean;
+  accountID: string = '/login';
 
   constructor(private authService: AccountAuthenticationService) {}
 
   ngOnInit() {
     this.authService.isLoggedIn().subscribe(
-      data => this.isLoggedIn = data,
+      data => {
+        this.isLoggedIn = data;
+        this.accountID = data ? `/account/${this.authService.getID()}` : '/login';
+        },
       error => console.log(error)
     );
   }

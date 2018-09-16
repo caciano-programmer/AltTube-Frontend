@@ -17,44 +17,4 @@ img {
   font-weight: bolder;
   font-size: 21pt;
 }
-.form-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0,0,0,.7);
-  z-index: 1;
-}
-form {
-  z-index: 2;
-  background-color: #fafafa;
-  height: 350px;
-  width: 50vw;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 2%;
-}
-#closeBtn {
-  top: 0;
-  right: 0;
-  position: fixed;
-  margin: 0;
-  color: white;
-  height: 1.5vw;
-  width: 1.5vw;
-  background-color: white;
-}
-#closeBtn img {
-  position: absolute;
-  cursor: pointer;
-  width: 100%;
-  height: 100%;
-  opacity: .6;
-  z-index: 2;
-}
-#closeBtn img:hover {
-  opacity: 1;
-}
+

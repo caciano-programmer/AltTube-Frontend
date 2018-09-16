@@ -7,7 +7,7 @@
     <a style="cursor: pointer" class="flex-fill" routerLink="/upload" routerLinkActive="active-url" [routerLinkActiveOptions]="{exact: true}">
       <img src="/assets/images/video.png">
     </a>
-    <a style="cursor: pointer" class="flex-fill" routerLink="/account" routerLinkActive="active-url" [routerLinkActiveOptions]="{exact: true}">
+    <a style="cursor: pointer" class="flex-fill" routerLink="{{accountID}}" routerLinkActive="active-url" [routerLinkActiveOptions]="{exact: true}">
       <img src="/assets/images/account.png">
     </a>
     <a class="float-right" style="cursor: pointer; margin-left: 6vw" routerLink="/login" *ngIf="!isLoggedIn"> <img src="/assets/images/login.png"> </a>
