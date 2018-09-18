@@ -9,10 +9,11 @@ import {ThumbnailModel} from '../../shared/models/thumbnail.model';
 })
 export class VideoAuthenticationService {
 
+  private currentVideo: ThumbnailModel = null;
+
   constructor(private http: HttpClient) { }
 
   saveVideo(name: string, owner: string, title: string, category: string, description: string, video: File, thumbnail: File): Observable<any> {
-
     const formData: FormData = new FormData();
     formData.append('name', name);
     formData.append('owner', owner);
@@ -27,6 +28,10 @@ export class VideoAuthenticationService {
     });
   }
 
+  getVideoStream(path: string): Observable<any> {
+    return this.http.get(global.getVideoStream(path));
+  }
+
   getVideosByOwner(num: number): Observable<Array<ThumbnailModel>> {
     return this.http.get<Array<ThumbnailModel>>(global.accountVideos(num));
   }
@@ -38,4 +43,8 @@ export class VideoAuthenticationService {
   getVideosByKeyword(keyword: string): Observable<Array<ThumbnailModel>> {
     return this.http.get<Array<ThumbnailModel>>(global.getVideosByKeyword(keyword.toLowerCase()));
   }
+
+  setCurrentVideo(thumbnail: ThumbnailModel): void { this.currentVideo = thumbnail; }
+
+  getCurrentVideo(): ThumbnailModel { return this.currentVideo; }
 }

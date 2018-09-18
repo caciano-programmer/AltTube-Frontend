@@ -38,7 +38,7 @@
           <button type="button" class="btn" id="newUserBtn" (click)="NewUser(authForm)">{{userBtn}}</button>
         </div>
         <div class="d-flex justify-content-center col-6">
-          <button type="submit" class="btn" id="submitBtn" >Submit</button>
+          <button type="submit" class="btn" id="submitBtn" [disabled]="disabled">Submit</button>
         </div>
       </div>
     </form>

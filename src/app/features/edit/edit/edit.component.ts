@@ -5,12 +5,12 @@ import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-edit',
-  templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.scss']
+  templateUrl: './edit.component.html'
 })
 export class EditComponent {
 
   file: File = null;
+  disabled: boolean = false;
 
   profileForm = this.formBuilder.group({
     description:  ['', Validators.compose([Validators.minLength(2), Validators.maxLength(600)])],
@@ -28,6 +28,7 @@ export class EditComponent {
   fileGet(event) { this.file = event.target.files[0]; }
 
   submit() {
+    this.disabled = true;
     const description: string = this.profileForm.value.description;
     const age: string = this.profileForm.value.age;
     const gender: string = this.profileForm.value.gender;
@@ -39,6 +40,7 @@ export class EditComponent {
           this.router.navigate([`/account/${this.auth.getID()}`]);
       }, error => { if (error !== null) this.auth.logout(true); });
 
+    this.disabled = false;
     this.edit();
   }
 }

@@ -14,8 +14,8 @@
         <div class="form-row">
           <div class="form-group" style="width: 50%">
             <label for="video">Select Video:</label>
-            <input required type="file" class="form-control-file" id="video" name="videoFile" accept="video/*"
-                   style="cursor: pointer" (change)="videoGet($event)">
+            <input required type="file" class="form-control-file" id="video" name="videoFile" accept="video/*" #input
+                   style="cursor: pointer" (change)="videoGet($event, input)">
           </div>
           <div class="form-group" style="width: 50%">
             <label for="thumbnail">Select Thumbnail:</label>
@@ -43,7 +43,7 @@
                     placeholder="Enter description..." maxlength="300" rows="3" minlength="2" required></textarea>
         </div>
         <div class="d-flex justify-content-center">
-          <button type="submit" class="btn btn-secondary">Submit</button>
+          <button type="submit" class="btn btn-secondary" [disabled]="disabled">Submit</button>
         </div>
       </form>
     </div>

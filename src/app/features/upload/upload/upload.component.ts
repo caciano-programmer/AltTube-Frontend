@@ -20,14 +20,24 @@ export class UploadComponent {
   description: string = '';
   message: string = '';
   showMsg: boolean = false;
+  disabled: boolean = false;
 
   constructor(private vidAuth: VideoAuthenticationService, private accAuth: AccountAuthenticationService, private router: Router) { }
 
-  videoGet(event): void { this.videoFile = event.target.files[0]; }
+  videoGet(event, input: HTMLInputElement): void {
+    this.videoFile = event.target.files[0];
+    const type: string = event.target.files[0].type;
+
+    if (event.target.files[0] != null && type !== 'video/mp4' && type !== 'video/webm' && type !== 'video/ogg')
+      input.setCustomValidity('Video file type must equal one of the following: mp4, webm, ogg');
+    else
+      input.setCustomValidity('');
+  }
 
   imageGet(event): void { this.thumbnailFile = event.target.files[0]; }
 
   submit(form: NgForm): void {
+    this.disabled = true;
     this.vidAuth.saveVideo(this.accAuth.getName(), this.accAuth.getID(), form.value.title, form.value.category, form.value.description,
       this.videoFile, this.thumbnailFile).subscribe(data => {
       const object: Object = JSON.parse(JSON.stringify(data));
@@ -37,5 +47,7 @@ export class UploadComponent {
         this.showMsg = true;
         this.message = error['error']['message'];
     });
+
+    this.disabled = false;
   }
 }

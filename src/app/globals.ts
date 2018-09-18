@@ -19,6 +19,9 @@ export const getVideosByCategory = function (category: string): string {
 export const getVideosByKeyword = function (keyword: string): string {
   return `http://localhost:8081/video/keyword/${keyword}`;
 };
+export const getVideoStream = function (path: string): string {
+  return `http://localhost:8081/video/stream/${path}`;
+}
 
 // ____________ Comments____________
 export const saveComment = 'http://localhost:8080/video/comment';

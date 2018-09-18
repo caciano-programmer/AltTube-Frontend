@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   Header: string = 'Login';
   userBtn: string = 'Create Account?';
   Subject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.newUser);
+  disabled: boolean = false;
 
   constructor(private authService: AccountAuthenticationService, private router: Router) { }
 
@@ -43,6 +44,7 @@ export class LoginComponent implements OnInit {
   }
 
   submit(form: NgForm): void {
+    this.disabled = true;
     if (this.newUser) {
       this.authService.create(form.value.name, form.value.email, form.value.password).subscribe(data => {
         const object: Object = JSON.parse(JSON.stringify(data));
@@ -77,6 +79,7 @@ export class LoginComponent implements OnInit {
       });
     }
 
+    this.disabled = false;
     form.reset();
   }
 }
