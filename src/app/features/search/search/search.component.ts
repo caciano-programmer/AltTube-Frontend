@@ -10,6 +10,7 @@ import {ThumbnailModel} from '../../../shared/models/thumbnail.model';
 export class SearchComponent implements OnInit {
 
   thumbnails: ThumbnailModel[] = [];
+  loading: boolean = true;
 
   constructor(private vidAuth: VideoAuthenticationService, private route: ActivatedRoute, private router: Router) { }
 
@@ -17,10 +18,16 @@ export class SearchComponent implements OnInit {
     this.route.params.subscribe(param => {
       if (param['category'] !== undefined)
         this.vidAuth.getVideosByCategory(param['category']).subscribe(
-          (result) => result.length > 0 ? this.thumbnails = result : this.thumbnails = []);
+          (result) => {
+            this.thumbnails = result;
+            this.loading = false;
+          });
       else
         this.vidAuth.getVideosByKeyword(param['keyword']).subscribe(
-          (result) => result.length > 0 ? this.thumbnails = result : this.thumbnails = []);
+          (result) => {
+            this.thumbnails = result;
+            this.loading = false;
+          });
     });
   }
 }

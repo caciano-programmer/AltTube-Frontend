@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {VideoAuthenticationService} from '../../../authentication/video/video-authentication.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ThumbnailModel} from '../../../shared/models/thumbnail.model';
+import {AccountAuthenticationService} from '../../../authentication/account/account-authentication.service';
 
 @Component({
   selector: 'app-video',
@@ -14,10 +15,13 @@ export class VideoComponent implements OnInit {
   ownerUrl: string;
   videoSrc: string;
 
-  constructor(private vidAuth: VideoAuthenticationService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private vidAuth: VideoAuthenticationService, private route: ActivatedRoute, private router: Router,
+              private accAuth: AccountAuthenticationService) {}
 
   ngOnInit() {
-    this.route.params.subscribe(params => this.ownerUrl = params['id'] ? `/account/${params['id']}` : '');
+    this.route.params.subscribe(
+      params => this.ownerUrl = params['id'] ? `/account/${params['id']}` : '',
+      () => this.accAuth.logout());
     this.thumbnail = this.vidAuth.getCurrentVideo();
     this.thumbnail == null ? this.router.navigate(['/']) : this.videoSrc = `http://localhost:8081/video/stream/${this.thumbnail.vidRef}`;
   }

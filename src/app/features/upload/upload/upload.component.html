@@ -7,8 +7,8 @@
   <div class="row" style="margin-top: 3vh">
     <div class="col-2"></div>
     <div class="col">
-      <form ngNativeValidate #uploadForm="ngForm" (ngSubmit)="submit(uploadForm)">
-        <div id="displayError" class="d-flex justify-content-center align-items-center" *ngIf="showMsg">
+      <form ngNativeValidate #uploadForm="ngForm" (ngSubmit)="submit(uploadForm)" ngClass="">
+        <div class="d-flex justify-content-center align-items-center" *ngIf="disabled" [ngClass]="loading ? 'displayLoading' : 'displayError'">
           <span>{{message}}</span>
         </div>
         <div class="form-row">

@@ -5,17 +5,6 @@
 #video {
   background-color: black;
 }
-#video img {
-  top: 50%;
-  left: 50%;
-  position: absolute;
-  transform: translate(-50px, -32.5px);
-  cursor: pointer;
-  opacity: .9;
-}
-#video img:hover {
-  opacity: 1;
-}
 #videoFooter {
   background-color: rgba(153, 153, 153, .4);
   border-bottom: black solid 1px;

@@ -27,7 +27,9 @@ export class AccountComponent implements OnInit {
       this.isEditable = (params['id'] !== undefined && params['id'] === this.auth.getID()) ? true : false;
       this.retrieveProfile(params['id']);
       if (params['id'])
-        this.vidAuth.getVideosByOwner(params['id']).subscribe(data => this.thumbnails = data.length > 0 ? data : null);
+        this.vidAuth.getVideosByOwner(params['id']).subscribe(
+          data => this.thumbnails = data.length > 0 ? data : null,
+          () => this.auth.logout());
     });
   }
 

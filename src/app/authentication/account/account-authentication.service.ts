@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {BehaviorSubject, EMPTY, Observable} from 'rxjs';
 import * as global from './../../globals';
-import {Router} from '@angular/router';
+import {NavigationStart, Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'

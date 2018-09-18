@@ -18,9 +18,9 @@ export class UploadComponent {
   title: string = '';
   category: string = '';
   description: string = '';
-  message: string = '';
-  showMsg: boolean = false;
+  message: string = 'Loading please wait...';
   disabled: boolean = false;
+  loading: boolean = true;
 
   constructor(private vidAuth: VideoAuthenticationService, private accAuth: AccountAuthenticationService, private router: Router) { }
 
@@ -37,17 +37,17 @@ export class UploadComponent {
   imageGet(event): void { this.thumbnailFile = event.target.files[0]; }
 
   submit(form: NgForm): void {
-    this.disabled = true;
+    this.disabled = this.loading = true;
     this.vidAuth.saveVideo(this.accAuth.getName(), this.accAuth.getID(), form.value.title, form.value.category, form.value.description,
       this.videoFile, this.thumbnailFile).subscribe(data => {
       const object: Object = JSON.parse(JSON.stringify(data));
       if (object['status'] !== null && object['status'] === 'successful')
         this.accAuth.isLoggedIn() ? this.router.navigate([`/account/${this.accAuth.getID()}`]) : this.router.navigate(['/']);
     }, error => {
-        this.showMsg = true;
+        this.loading = false;
         this.message = error['error']['message'];
+        if (this.message === 'Login credentials are in improper form, please try to login again.')
+          this.accAuth.logout(false);
     });
-
-    this.disabled = false;
   }
 }
