@@ -19,6 +19,7 @@ export class SearchComponent implements OnInit {
       if (param['category'] !== undefined)
         this.vidAuth.getVideosByCategory(param['category']).subscribe(
           (result) => {
+            console.log(result);
             this.thumbnails = result;
             this.loading = false;
           });

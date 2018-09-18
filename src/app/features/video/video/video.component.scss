@@ -12,17 +12,33 @@
   border-right: black solid 1px;
 }
 #comments:hover, #live-chat:hover {
-  background-color: rgba(153, 153, 153, .5);
+  background-color: rgba(153, 153, 153, .6);
 }
 #comments, #live-chat {
-  background-color: rgba(153, 153, 153, .2);
+  width: 12vw;
+  background-color: rgba(153, 153, 153, .35);
   border-top: black solid 1px;
   text-align: center;
   cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  padding: 5px;
 }
-#showMore img {
+img {
   height: 2.5vh;
   width: 5vw;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-2.5vw, 1.25vh);
   cursor: pointer;
+}
+#description {
+  border: none;
+  cursor: default;
+  background-color: rgba(0,0,0,0);
+}
+.hidden {
+  display: none;
 }
 
