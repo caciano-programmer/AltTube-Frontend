@@ -1,0 +1,22 @@
+.ng-untouched {
+  box-shadow: none;
+}
+#commentList {
+  position: relative;
+  height: 12vh;
+  width: 100%;
+}
+#replyInput {
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-bottom: solid 2px black;
+  width: 100%;
+  margin-left: -1rem;
+}
+#replyInputOptions span span {
+  margin-right: 1rem;
+  margin-left: 1rem;
+  font-size: large;
+  cursor: pointer;
+}

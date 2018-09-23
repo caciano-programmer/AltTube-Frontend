@@ -6,11 +6,11 @@ export class ThumbnailModel {
   private _owner: string;
   private _name: string;
   private _date: Date;
-  private _id: number;
+  private _id: string;
   private _vidRef: string;
   private _description: string;
 
-  set id(value: number) { this._id = value; }
+  set id(value: string) { this._id = value; }
   set date(value: Date) { this._date = value; }
   set image(value: string) { this._image = value; }
   set title(value: string) { this._title = value; }
@@ -20,7 +20,7 @@ export class ThumbnailModel {
   set vidRef(value: string) { this._vidRef = value; }
   set description(value: string) { this._description = value; }
 
-  get id(): number { return this._id; }
+  get id(): string { return this._id; }
   get date(): Date { return this._date; }
   get name(): string { return this._name; }
   get title(): string { return this._title; }

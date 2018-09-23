@@ -4,7 +4,9 @@
     <img src="/assets/images/play.png" style="z-index: 0; top: -12.5vh; left: 8.25vw; position: relative; height: 5vh; width: 4.5vw; opacity: .6">
   </div>
   <div style="width: 100%; height: 12.5vh; border: 1px black solid; padding: 1vh;">
-    <div style="width: 100%; font-size: 3.25vh; text-overflow: ellipsis; overflow: hidden">{{thumbnail.title | lowercase | titlecase}}</div>
+    <div style="width: 100%; font-size: 3.25vh; text-overflow: ellipsis; overflow: hidden; white-space: nowrap">
+      {{thumbnail.title | lowercase | titlecase}}
+    </div>
     <div style="height: 3vh"></div>
     <div style="font-size: 2vh" class="d-flex">
       <span class="flex-fill" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap">

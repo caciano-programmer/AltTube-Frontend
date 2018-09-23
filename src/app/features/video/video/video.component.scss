@@ -16,6 +16,7 @@
 }
 #comments, #live-chat {
   width: 12vw;
+  height: 4vh;
   background-color: rgba(153, 153, 153, .35);
   border-top: black solid 1px;
   text-align: center;
@@ -23,6 +24,10 @@
   position: absolute;
   bottom: 0;
   padding: 5px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: #007bff;
+  font-weight: bold;
 }
 img {
   height: 2.5vh;

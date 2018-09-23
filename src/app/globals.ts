@@ -24,8 +24,8 @@ export const getVideoStream = function (path: string): string {
 }
 
 // ____________ Comments____________
-export const saveComment = 'http://localhost:8080/video/comment';
-export const saveCommentReply = 'http://localhost:8080/video/reply';
-export const getCommentsFunction = function (date: Date): string {
-  return `http://localhost:8080/video/comment/${{date}}`;
+export const saveComment = 'http://localhost:8082/video/comment';
+export const saveCommentReply = 'http://localhost:8082/video/reply';
+export const getCommentsFunction = function (id: string): string {
+  return `http://localhost:8082/video/comment/id/${id}`;
 }

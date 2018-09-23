@@ -1,3 +1,63 @@
-<p>
-  {{name}}
-</p>
+<div class="container" style="margin-bottom: 15vh" #anchor>
+  {{scrollTo(anchor)}}
+  <hr>
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col">
+      <form ngNativeValidate #form="ngForm" (submit)="post(form)">
+        <div class="form-group">
+          <label for="comment">Post Comment: </label>
+          <textarea type="text" id="comment" name="comment" [(ngModel)]="commentText" class="form-control" maxlength="100"
+                    minlength="1" required rows="1" #text (click)="enforceLoggedIn(text)"></textarea>
+        </div>
+        <button type="submit" class="btn btn-secondary" style="position: absolute; right: .75rem">Post</button>
+      </form>
+    </div>
+    <div class="col-4"></div>
+  </div>
+  <div class="row" style="margin-top: 10vh">
+    <div class="col-1"></div>
+    <div class="col-11">
+      <div *ngIf="comments.length === 0" style="font-weight: bold; font-size: large">No comments have been added yet.</div>
+      <div *ngFor="let comment of comments; let i = index" style="margin-top: 5vh">
+        <div class="row border" id="commentList" style="background-color: #dddddd">
+          <p class="col-12" style="position: absolute; top: 5%; left: 0; width: 100%; word-wrap: break-word">
+            <span style="font-weight: bold; margin-right: 1rem">{{comment['author']}}:</span>{{comment['text']}}
+          </p>
+          <small style="position: absolute; bottom: 0; right: 2.5%; vertical-align: bottom">
+            <span style="margin-right: 1rem">Date: {{comment['timestamp'] | date}}</span>
+            <span style="color: #007bfa; margin-right: 1rem; font-weight: bold; text-decoration: underline; cursor: pointer"
+                  (click)="viewReply(comment['id'])" *ngIf="comment.replies.length > 0">{{viewOrHideReplies(comment['id'])}} Replies</span>
+            <span style="color: #007bfa; cursor: pointer; font-weight: bold; text-decoration: underline" (click)="postingReply(comment['id'])">post reply</span>
+          </small>
+        </div>
+        <div *ngIf="isViewingReplies && comment['id'] === currentCommentId">
+          <div class="row" id="replyList" *ngFor="let reply of comment['replies']; let i = index" style="height: 8vh"
+               [ngStyle]="{'margin-top': i === 0 ? '0' : '1.5vh'}">
+            <div class="col-2"></div>
+            <div class="col-10">
+              <div style="border: 1px solid lightgray; margin-left: -1rem; width: 100%; height: 100%;
+              word-wrap: break-word; position: relative; font-size: smaller; background-color: #e2e0e0; opacity: .85">
+                <span style="font-weight: bold; margin-right: 1rem; white-space: nowrap; margin-left: 1rem">{{reply['author']}}:</span>{{reply['text']}}
+                <small style="position: absolute; bottom: 0; right: 2.5%">{{reply['timestamp'] | date}}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" *ngIf="isReplying && comment['id'] === currentCommentId">
+          <div class="col-1"></div>
+          <div class="col-11">
+            <input type="text" maxlength="50" minlength="1" id="replyInput" placeholder="Post Reply here..." [(ngModel)]="replyText">
+            <div style="position: relative; width: 100%" id="replyInputOptions">
+              <span style="position: absolute; right: 0">
+                <span (click)="clear()">Cancel</span>
+                <span (click)="submitReply(comment['id'], i)">Post</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-2"></div>
+  </div>
+</div>

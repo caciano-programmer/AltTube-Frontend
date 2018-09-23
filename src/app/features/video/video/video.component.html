@@ -33,4 +33,5 @@
   </div>
 </div>
 <app-live-chat [name]="thumbnail.name | lowercase | titlecase" *ngIf="showLiveChat"></app-live-chat>
-<app-comments [name]="thumbnail.name | lowercase | titlecase" [ngStyle]="{'display': showComments ? 'initial' : 'none'}"></app-comments>
+<app-comments [name]="thumbnail.name | lowercase | titlecase" [vidID]="thumbnail.id" [comments]="comments"
+              [ngStyle]="{'display': showComments ? 'initial' : 'none'}" *ngIf="showComments" #comment></app-comments>
