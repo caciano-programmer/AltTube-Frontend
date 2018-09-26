@@ -25,13 +25,13 @@
         <div class="d-flex flex-row">Date Published: {{thumbnail.date | date}}</div>
         <p style="width: 100%" id="description">Description: {{thumbnail.description}}</p>
       </div>
-      <span id="comments" style="border-right: 1px solid black; left: 0" (click)="viewComments()">View Comments</span>
-      <span id="live-chat" style="border-left: 1px solid black; right: 0" (click)="viewLiveChat()">View Live Chat</span>
+      <span id="comments" style="border-right: 1px solid black; left: 0" (click)="viewComments()">Comments</span>
+      <span id="live-chat" style="border-left: 1px solid black; right: 0" (click)="viewLiveChat()">Live Chat</span>
       <img src="/assets/images/{{option}}" (click)="showMore()">
     </div>
     <div class="col-1"></div>
   </div>
 </div>
-<app-live-chat [name]="thumbnail.name | lowercase | titlecase" *ngIf="showLiveChat"></app-live-chat>
+<app-live-chat *ngIf="showLiveChat"></app-live-chat>
 <app-comments [name]="thumbnail.name | lowercase | titlecase" [vidID]="thumbnail.id" [comments]="comments"
               [ngStyle]="{'display': showComments ? 'initial' : 'none'}" *ngIf="showComments" #comment></app-comments>

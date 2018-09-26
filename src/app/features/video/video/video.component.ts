@@ -21,7 +21,7 @@ export class VideoComponent implements OnInit {
   videoSrc: string;
   showLiveChat: boolean = false;
   showComments: boolean = false;
-  comments: CommentModel[];
+  comments: CommentModel[] = [];
 
   constructor(private vidAuth: VideoAuthenticationService, private route: ActivatedRoute, private router: Router,
               private accAuth: AccountAuthenticationService, private commentAuth: CommentAuthenticationService) {}

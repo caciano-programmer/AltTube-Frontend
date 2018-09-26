@@ -1,4 +1,4 @@
-import {AfterViewChecked, Component, Input} from '@angular/core';
+import {AfterViewChecked, Component, Input, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {CommentAuthenticationService} from '../../../authentication/comment/comment-authentication.service';
 import {AccountAuthenticationService} from '../../../authentication/account/account-authentication.service';
@@ -10,12 +10,13 @@ import {ReplyModel} from '../../../shared/models/reply.model';
   templateUrl: './comments.component.html',
   styleUrls: ['./comments.component.scss']
 })
-export class CommentsComponent implements AfterViewChecked {
+export class CommentsComponent implements AfterViewChecked, OnInit {
 
   @Input('name') name: string;
   @Input('vidID') vidID: string;
   @Input('comments') comments: CommentModel[];
 
+  currentUser: string;
   commentText: string;
   replyText: string;
   isReplying: boolean = false;
@@ -26,6 +27,8 @@ export class CommentsComponent implements AfterViewChecked {
   constructor(private commentAuth: CommentAuthenticationService, private accAuth: AccountAuthenticationService) {}
 
   ngAfterViewChecked() { this.commentsLoaded = true; }
+
+  ngOnInit() { this.currentUser = this.accAuth.getName() || null; }
 
   scrollTo(div: HTMLDivElement) { div.scrollIntoView(); }
 
@@ -50,7 +53,7 @@ export class CommentsComponent implements AfterViewChecked {
   clear() { this.isViewingReplies = this.isReplying = false; }
 
   submitReply(id: string, index: number) {
-    this.commentAuth.saveReply(this.name, this.replyText, id).subscribe(response => {
+    this.commentAuth.saveReply(this.currentUser, this.replyText, id).subscribe(response => {
       if (response != null)
         this.comments[index].replies.unshift(response);
     }, () => this.accAuth.logout());
@@ -59,7 +62,7 @@ export class CommentsComponent implements AfterViewChecked {
   }
 
   post(form: NgForm): void {
-    this.commentAuth.saveComment(this.commentText, this.name, this.vidID).subscribe(response => {
+    this.commentAuth.saveComment(this.commentText, this.currentUser, this.vidID).subscribe(response => {
         if (response != null)
           this.comments.unshift(response);
     }, () => this.accAuth.logout());

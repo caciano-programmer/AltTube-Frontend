@@ -1,1 +1,33 @@
-
+<div class="container" style="margin-bottom: 15vh" #livechat>
+  {{scrollTo(livechat)}}
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="border col" style="height: 50vh; width: 100%; padding: 1.5rem; background-color: #f2f2f2">
+      <div>
+        <span style="font-weight: bolder; margin-right: 1rem; font-size: large">Moderator:</span>
+        <p style="display: inline; font-weight: bold">To chat type below. Must be logged in.</p>
+      </div>
+      <div *ngFor="let comment of comments">
+        <span style="font-weight: bold; margin-right: 1rem">{{comment.name}}:</span>
+        <p style="display: inline">{{comment.text}}</p>
+      </div>
+    </div>
+    <div class="col-1"></div>
+  </div>
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col" style="padding: 0">
+      <form ngNativeValidate #form="ngForm" (submit)="sendMessage(form)">
+        {{loggedInValidity(chat)}}
+        <div class="input-group">
+          <input type="text" name="comment" [(ngModel)]="text" class="form-control" maxlength="75" minlength="2"
+                 placeholder="Type here to chat..." #chat>
+          <div class="input-group-append">
+            <button type="submit" class="btn btn-secondary">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-1"></div>
+  </div>
+</div>

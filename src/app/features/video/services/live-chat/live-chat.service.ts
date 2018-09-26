@@ -13,7 +13,10 @@ export class LiveChatService {
     this.webSocket.onmessage = message => this.messages.next( JSON.parse(message['data']) );
   }
 
-  sendMessage(message: ChatModel) { this.webSocket.send(JSON.stringify(message)); }
+  sendMessage(message: ChatModel) {
+    if (this.webSocket.readyState === 1)
+      this.webSocket.send(JSON.stringify(message));
+  }
 
   getMessages(): Subject<ChatModel> { return this.messages; }
 
